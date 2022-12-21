@@ -1,0 +1,30 @@
+{
+  "spaceID": "45lly9oa9o4c",
+  "from": {
+    "environment": "dev",
+    "content_type": "mmmContentButton"
+  },
+  "to": {
+    "environment": "staging",
+    "name": "MMM > Content > Button",
+    "content_type": "mmmContentButton"
+  },
+  "rename": {
+    "atomicModule": {
+      "id": "mmmModule",
+      "name": "MMM > Module"
+    },
+    "atomicTargetingBoxSeperate": {
+      "id": "mmmTargetingBox",
+      "name": "MMM > Targeting Box"
+    },
+    "atomicContent": {
+      "id": "mmmContent",
+      "name": "MMM > Content"
+    },
+    "atomicCampaignSendV3": {
+      "id": "mmmCampaignSend",
+      "name": "MMM > Campaign Send"
+    }
+  }
+}

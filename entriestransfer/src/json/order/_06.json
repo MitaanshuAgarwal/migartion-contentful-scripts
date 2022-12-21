@@ -1,0 +1,79 @@
+{
+  "spaceID": "45lly9oa9o4c",
+  "environment": "dev",
+  "content_type": "mmmModuleContentMapping",
+  "limit": 1000,
+  "skip": 0,
+  "operations": [
+    {
+      "prefix": "MODULE-",
+      "name": "move",
+      "spaceID": "45lly9oa9o4c",
+      "environment": "staging",
+      "content_type": "mmmModule"
+    }
+  ],
+  "combine": [],
+  "omit": [],
+  "explode": [],
+  "rename": {
+    "module": "moduleType"
+  },
+  "filters": [],
+  "fields": [
+    {
+      "fieldID": "module",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "object"
+          }
+        ],
+        "operations": [
+          {
+            "name": "transformation",
+            "value": "referenceToJson",
+            "mapping": {
+              "moduleType": "Module_Type",
+              "description": "Description",
+              "numberOfContentItems": "No_of_Contents_Required"
+            }
+          },
+          {
+            "name": "typeCasting",
+            "value": "array"
+          }
+        ]
+      }
+    },
+    {
+      "fieldID": "content",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "array"
+          }
+        ],
+        "operations": [
+          {
+            "name": "transformation",
+            "value": "referenceMapping",
+            "mapping": {
+              "spaceID": "45lly9oa9o4c",
+              "environment": "staging",
+              "content_type": [
+                "mmmContentAtlImageBanner",
+                "mmmContentAtlTextBanner",
+                "mmmContentButton",
+                "mmmContentRecipe",
+                "mmmContentDivider"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

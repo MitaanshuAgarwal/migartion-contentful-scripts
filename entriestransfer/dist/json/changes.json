@@ -1,0 +1,86 @@
+{
+    "spaceID": "45lly9oa9o4c",
+    "environment": "dev",
+    "content_type": "mmmCampaignSend",
+    "limit": 1000,
+    "skip": 0,
+    "operations": [
+        {
+            "name": "move",
+            "spaceID": "45lly9oa9o4c",
+            "environment": "staging",
+            "content_type": "mmmCampaignSend",
+            "prefix": "SEND-"
+        }
+    ],
+    "omit": ["sendDate", "maxContentBlocks", "targetingBoxes"],
+    "explode": [],
+    "rename": {
+        "CampaignCode": "campaignCodes"
+    },
+    "filters": [],
+    "fields": [],
+    "combine": [
+        {
+            "operation": {
+                "name": "groupFields",
+                "mapping": {},
+                "fields": [
+                    {
+                        "name": "name",
+                        "value": "ATL Banner"
+                    },
+                    {
+                        "name": "sendDate",
+                        "rename": "sendDates",
+                        "operations": [
+                            {
+                                "name": "transformation",
+                                "value": "dateStringToEuropeanDateFormat"
+                            },
+                            {
+                                "name": "typeCasting",
+                                "value": "array"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "maxContentBlocks",
+                        "rename": "maxContent"
+                    },
+                    {
+                        "name": "targetingBoxes",
+                        "rename": "TargetingBoxes",
+                        "operations": [
+                            {
+                                "name": "transformation",
+                                "value": "referenceMapping",
+                                "mapping": {
+                                    "spaceID": "45lly9oa9o4c",
+                                    "environment": "staging",
+                                    "content_type": "mmmTargetingBox"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "operation": {
+                "name": "addNewEntry",
+                "mapping": {
+                    "spaceID": "45lly9oa9o4c",
+                    "environment": "staging",
+                    "content_type": "mmmSendDatesAtlBanner"
+                }
+            }
+        },
+        {
+            "operation": {
+                "name": "combineRefrenceAsLink",
+                "value": "targetSendDates"
+            }
+        }
+    ]
+}

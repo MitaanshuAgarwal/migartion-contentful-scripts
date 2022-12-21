@@ -1,0 +1,113 @@
+{
+  "spaceID": "45lly9oa9o4c",
+  "environment": "dev",
+  "content_type": "mmmContent",
+  "limit": 1000,
+  "skip": 0,
+  "operations": [
+    {
+      "prefix": null,
+      "name": "move",
+      "spaceID": "45lly9oa9o4c",
+      "environment": "staging",
+      "content_type": "mmmContentAtlImageBanner"
+    }
+  ],
+  "omit": ["contentType"],
+  "combine": [],
+  "filters": [
+    {
+      "fieldID": "contentType",
+      "operations": [
+        {
+          "name": "fieldValueMatch",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "fieldID": "imageUrl",
+      "operations": [
+        {
+          "name": "fieldTypeMatch",
+          "value": "notEmpty"
+        }
+      ]
+    },
+    {
+      "fieldID": "name",
+      "operations": [
+        {
+          "name": "fieldValueNotContain",
+          "value": "Recipe"
+        }
+      ]
+    }
+  ],
+  "explode": [],
+  "rename": {
+    "ContentHeadline": "contentHeadline",
+    "ContentCopy": "contentCopy",
+    "ButtonLabel": "buttonLabel"
+  },
+  "fields": [
+    {
+      "fieldID": "subscription",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "string"
+          }
+        ],
+        "operations": [
+          {
+            "name": "typeCasting",
+            "value": "array"
+          }
+        ]
+      }
+    },
+    {
+      "fieldID": "ContentCopy",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "string"
+          }
+        ],
+        "operations": [
+          {
+            "name": "typeCasting",
+            "value": "textToRichText"
+          }
+        ]
+      }
+    },
+    {
+      "fieldID": "clickUrl",
+      "skipUndefinedCheck": true,
+      "replacingOtherFieldValue": true,
+      "replacingFieldID": "ButtonLabel",
+      "change": {
+        "where": [
+          {
+            "name": "fieldValueMatch",
+            "value": "empty"
+          }
+        ],
+        "operations": [
+          {
+            "name": "transformation",
+            "value": "valueMapping",
+            "mapping": {
+              "fieldID": "ButtonLabel",
+              "value": ""
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

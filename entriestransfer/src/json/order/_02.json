@@ -1,0 +1,83 @@
+{
+  "spaceID": "45lly9oa9o4c",
+  "environment": "dev",
+  "content_type": "mmmContent",
+  "limit": 1000,
+  "skip": 0,
+  "operations": [
+    {
+      "name": "move",
+      "spaceID": "45lly9oa9o4c",
+      "environment": "staging",
+      "content_type": "mmmContentAtlTextBanner"
+    }
+  ],
+  "omit": [
+    "contentType",
+    "imageUrl",
+    "imageAltText",
+    "clickUrl",
+    "ButtonLabel"
+  ],
+  "filters": [
+    {
+      "fieldID": "contentType",
+      "operations": [
+        {
+          "name": "fieldValueMatch",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "fieldID": "imageUrl",
+      "operations": [
+        {
+          "name": "fieldTypeMatch",
+          "value": "empty"
+        }
+      ]
+    }
+  ],
+  "explode": [],
+  "rename": {
+    "ContentHeadline": "contentHeadline",
+    "ContentCopy": "contentCopy"
+  },
+  "fields": [
+    {
+      "fieldID": "subscription",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "string"
+          }
+        ],
+        "operations": [
+          {
+            "name": "typeCasting",
+            "value": "array"
+          }
+        ]
+      }
+    },
+    {
+      "fieldID": "ContentCopy",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "string"
+          }
+        ],
+        "operations": [
+          {
+            "name": "typeCasting",
+            "value": "textToRichText"
+          }
+        ]
+      }
+    }
+  ]
+}

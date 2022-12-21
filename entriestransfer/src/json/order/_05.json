@@ -1,0 +1,85 @@
+{
+  "spaceID": "45lly9oa9o4c",
+  "environment": "dev",
+  "content_type": "mmmContent",
+  "limit": 1000,
+  "skip": 0,
+  "operations": [
+    {
+      "name": "move",
+      "spaceID": "45lly9oa9o4c",
+      "environment": "staging",
+      "content_type": "mmmContentRecipe"
+    }
+  ],
+  "combine": [],
+  "omit": ["ContentCopy", "contentType", "termsAndConditions"],
+  "filters": [
+    {
+      "fieldID": "contentType",
+      "operations": [
+        {
+          "name": "fieldValueMatch",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "fieldID": "name",
+      "operations": [
+        {
+          "name": "fieldValueContain",
+          "value": "Recipe"
+        }
+      ]
+    }
+  ],
+  "explode": [],
+  "rename": {
+    "ContentHeadline": "contentHeadline",
+    "ButtonLabel": "buttonLabel"
+  },
+  "fields": [
+    {
+      "fieldID": "subscription",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "string"
+          }
+        ],
+        "operations": [
+          {
+            "name": "typeCasting",
+            "value": "array"
+          }
+        ]
+      }
+    },
+    {
+      "fieldID": "clickUrl",
+      "skipUndefinedCheck": true,
+      "replacingOtherFieldValue": true,
+      "replacingFieldID": "ButtonLabel",
+      "change": {
+        "where": [
+          {
+            "name": "fieldValueMatch",
+            "value": "empty"
+          }
+        ],
+        "operations": [
+          {
+            "name": "transformation",
+            "value": "valueMapping",
+            "mapping": {
+              "fieldID": "ButtonLabel",
+              "value": ""
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

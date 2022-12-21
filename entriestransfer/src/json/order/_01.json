@@ -1,0 +1,41 @@
+{
+  "spaceID": "45lly9oa9o4c",
+  "environment": "dev",
+  "content_type": "mmmContent",
+  "limit": 1000,
+  "skip": 0,
+  "operations": [
+    {
+      "name": "move",
+      "spaceID": "45lly9oa9o4c",
+      "environment": "staging",
+      "content_type": "mmmContentButton"
+    }
+  ],
+  "omit": [
+    "contentType",
+    "ContentHeadline",
+    "ContentCopy",
+    "imageUrl",
+    "imageAltText",
+    "termsAndConditions",
+    "subscription"
+  ],
+  "filters": [
+    {
+      "fieldID": "contentType",
+      "operations": [
+        {
+          "name": "fieldValueMatch",
+          "value": 3
+        }
+      ]
+    }
+  ],
+  "explode": [],
+  "combine": [],
+  "rename": {
+    "ButtonLabel": "buttonLabel"
+  },
+  "fields": []
+}

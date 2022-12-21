@@ -1,0 +1,60 @@
+{
+  "spaceID": "45lly9oa9o4c",
+  "environment": "dev",
+  "content_type": "mmmContent",
+  "limit": 1000,
+  "skip": 0,
+  "operations": [
+    {
+      "name": "move",
+      "spaceID": "45lly9oa9o4c",
+      "environment": "staging",
+      "content_type": "mmmContentDivider"
+    }
+  ],
+  "combine": [],
+  "omit": [
+    "contentType",
+    "imageUrl",
+    "imageAltText",
+    "ButtonLabel",
+    "clickUrl",
+    "subscription",
+    "termsAndConditions"
+  ],
+  "filters": [
+    {
+      "fieldID": "contentType",
+      "operations": [
+        {
+          "name": "fieldValueMatch",
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "explode": [],
+  "rename": {
+    "ContentHeadline": "contentHeadline",
+    "ContentCopy": "contentCopy"
+  },
+  "fields": [
+    {
+      "fieldID": "ContentCopy",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "string"
+          }
+        ],
+        "operations": [
+          {
+            "name": "transformation",
+            "value": "textToRichText"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "spaceID": "45lly9oa9o4c",
+  "environment": "dev",
+  "content_type": "mmmTargetingBox",
+  "limit": 1000,
+  "skip": 0,
+  "operations": [
+    {
+      "prefix": null,
+      "name": "move",
+      "spaceID": "45lly9oa9o4c",
+      "environment": "staging",
+      "content_type": "mmmTargetingBox"
+    }
+  ],
+  "combine": [],
+  "omit": [],
+  "explode": ["contentBlock"],
+  "rename": {},
+  "filters": [],
+  "fields": [
+    {
+      "fieldID": "contentBlock",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "object"
+          }
+        ],
+        "operations": [
+          {
+            "name": "transformation",
+            "value": "referenceToJson",
+            "mapping": {
+              "sendType": "sendType",
+              "dynamicMmmContent": "dynamicMmmContent",
+              "ModuleContentMapping": "module",
+              "channel": "channel"
+            }
+          },
+          {
+            "name": "transformation",
+            "value": "referenceMapping",
+            "mapping": {
+              "fieldID": "module",
+              "spaceID": "45lly9oa9o4c",
+              "environment": "staging",
+              "content_type": "mmmModule",
+              "prefix": "MODULE-"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fieldID": "exclusionRules",
+      "change": {
+        "where": [
+          {
+            "name": "fieldTypeMatch",
+            "value": "array"
+          }
+        ],
+        "operations": [
+          {
+            "name": "transformation",
+            "value": "referenceToString",
+            "mapping": "ruleId"
+          }
+        ]
+      }
+    }
+  ]
+}
